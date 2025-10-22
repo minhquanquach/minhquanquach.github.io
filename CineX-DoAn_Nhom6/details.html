@@ -1,0 +1,193 @@
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>CineX — Chi tiết phim & đặt vé</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <link rel="stylesheet" href="assets/css/style_signin.css">
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
+      <div class="container">
+        <a class="navbar-brand fw-bold" href="index.html"><span class="brand-badge">CineX</span></a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#nav2">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div id="nav2" class="collapse navbar-collapse">
+          <ul class="navbar-nav me-auto">
+            <li class="nav-item"><a class="nav-link" href="index.html">Trang chủ</a></li>
+          </ul>
+          <button id="signin_signup" type="button" class="btn-signin">
+            Đăng nhập / Đăng ký
+          </button>  
+        </div>
+      </div>
+    </nav>
+
+    <!-- BANNER -->
+    <section class="movie-hero border-bottom">
+      <div class="container py-5">
+        <div class="row g-4 align-items-center">
+          <div class="col-12 col-md-auto">
+            <img id="poster" class="rounded shadow-lg poster-lg" src="assets/img/placeholder-poster.jpg" alt="Poster">
+          </div>
+          <div class="col">
+            <h1 id="title" class="display-6 fw-bold mb-2 text-white">Movie Title</h1>
+            <div class="d-flex flex-wrap gap-2 mb-3">
+              <span id="ratingBadge" class="badge bg-warning text-dark">IMDb 8.5</span>
+              <span class="badge text-bg-secondary"><i class="bi bi-clock"></i> <span id="duration">120</span> phút</span>
+              <span class="badge text-bg-secondary"><i class="bi bi-translate"></i> Phụ đề</span>
+              <span class="badge text-bg-secondary"><i class="bi bi-film"></i> <span id="genres">Action, Sci-fi</span></span>
+            </div>
+            <p id="overview" class="mb-0 text-white-50">Giới thiệu phim.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- BOOKING -->
+    <section class="py-4">
+      <div class="container">
+        <div class="row g-4">
+          <!-- Showtimes -->
+          <div class="col-lg-7">
+            <div class="card shadow-sm">
+              <div class="card-body">
+                <h5 class="card-title">Chọn suất chiếu</h5>
+                <div id="dateTabs" class="nav nav-pills mb-3 gap-2 flex-nowrap overflow-auto"></div>
+                <div class="row g-2" id="timeSlots"></div>
+                <hr>
+                <div class="row g-2">
+                  <div class="col-md-6">
+                    <label class="form-label">Rạp</label>
+                    <select id="theaterSelect" class="form-select">
+                      <option>CGV Aeon Tân Phú</option>
+                      <option>CGV Gigamall Thủ Đức</option>
+                      <option>CGV Aeon Bình Tân</option>
+                      <option>Lotte Cinema Gò Vấp</option>
+                      <option>BHD Star Bitexco</option>
+                      <option>Galaxy Nguyễn Du</option>
+                      <option>Cinestar Hai Bà Trưng</option>
+                    </select>
+                  </div>
+                  <div class="col-md-6">
+                    <label class="form-label">Định dạng</label>
+                    <select id="formatSelect" class="form-select">
+                      <option>2D</option>
+                      <option>IMAX</option>
+                      <option>4DX</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Seats -->
+          <div class="col-lg-5">
+            <div class="card shadow-sm">
+              <div class="card-body">
+                <h5 class="card-title d-flex align-items-center justify-content-between">
+                  Chọn ghế
+                  <small class="text-body-secondary">Giá: <span class="badge text-bg-success" id="priceBadge">90.000đ</span></small>
+                </h5>
+                <div class="seat-legend mb-2">
+                  <span class="legend available">Trống</span>
+                  <span class="legend selected">Đang chọn</span>
+                  <span class="legend sold">Đã bán</span>
+                </div>
+                <div id="seatMap" class="seat-map"></div>
+                <div class="d-flex justify-content-between align-items-center mt-3">
+                  <div>
+                    <span class="me-2">Ghế: <strong id="selectedSeats">—</strong></span>
+                    <span class="text-body-secondary">Tổng: <strong id="totalPrice">0đ</strong></span>
+                  </div>
+                  <button class="btn btn-primary" id="btnCheckout" disabled>Tiếp tục</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <footer class="py-4 bg-dark text-white text-center">
+      <small>&copy; 2025 CineX</small>
+    </footer>
+
+<!-- PopUp -->
+ <div id="popup" class="popup">
+        <div class="popup_content">
+            <span id="closePopup">&times;</span>
+
+            <div class="container">
+                <div class="tab">
+                    <button id="tabSignUp" class="active">Đăng ký</button>
+                    <button id="tabSignIn">Đăng nhập</button>
+                </div>
+            </div>
+
+            <div class="form_container">
+                <form id="sign_up" class="active">
+
+                    <div class="form_group_name">
+                        <label for="name">Tên đăng ký:</label>
+                        <input type="text" placeholder="Tên đăng ký" required>
+                    </div>
+
+                    <div class="form_group_phone">
+                        <label for="phone_number">Số điện thoại:</label>
+                        <input type="tel" placeholder="Số điện thoại" required>
+                    </div>
+                    <div class="form_group_password">
+                        <label for="password">Mật khẩu:</label>
+                        <div class="password_container">
+                            <input type="password" placeholder="Mật khẩu" required>
+                            <span class="toggle_password" onclick="toggle_password(this)">Hiện</span>
+                        </div>
+                    </div>
+
+                    <button type="submit">Xác nhận</button>
+
+                    <p>Đã có tài khoản? <a href="#" id="toSignIn"> Đăng nhập</a></p>
+                </form>
+                <form id="sign_in">
+
+                    <div class="form_group_name1">
+                        <label for="name1">Tên đăng nhập:</label>
+                        <input type="text" placeholder="Tên đăng nhập" required>
+                    </div>
+
+                    <div class="form_group_pass1">
+                        <label for="password1">Mật khẩu:</label>
+                        <div class="password_container">
+                            <input type="password" placeholder="Mật khẩu" required>
+                            <span class="toggle_password" onclick="toggle_password(this)">Hiện</span>
+                        </div>
+                    </div>
+                    <button type="submit">Xác nhận</button>
+                    <p>Chưa có tài khoản? <a href="#" id="toSignUp"> Đăng ký</a></p>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div id="popupSuccess" class="popup2">
+        <div class="popup_content2">
+            <span id="closePopup2">&times;</span>
+            <p>Thành công!</p>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/js/app.js"></script>
+    <script src="assets/js/script_signin.js"></script>
+    <script>
+      document.addEventListener('DOMContentLoaded', () => window.CineX.initDetails());
+    </script>
+  </body>
+</html>

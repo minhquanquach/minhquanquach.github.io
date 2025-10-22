@@ -1,0 +1,237 @@
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>CineX — Mua vé xem phim nhanh</title>
+    <meta name="description" content="CineX: Đặt vé xem phim nhanh, giao diện hiện đại.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <!-- Bootstrap 5 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <!-- App CSS -->
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <link rel="stylesheet" href="assets/css/style_signin.css">
+  </head>
+  <body>
+    <!-- NAVBAR -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top shadow-sm">
+      <div class="container">
+        <a class="navbar-brand fw-bold" href="#"><span class="brand-badge">CineX</span></a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="mainNav">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item"><a class="nav-link" href="sites/index_time_Chainsaw.html">Rạp</a></li>
+          </ul>
+          <form class="d-flex me-3" role="search">
+          </form>
+          <button id="signin_signup" type="button" class="btn-signin">
+            Đăng nhập / Đăng ký
+          </button>     
+        </div>
+      </div>
+    </nav>
+
+    <!-- HERO -->
+    <section class="hero-section bg-dark text-white position-relative">
+      <div class="container py-5">
+        <div class="row align-items-center g-4">
+          <div class="col-lg-6">
+            <h1 class="display-5 fw-bold">Đặt vé xem phim nhanh • <span class="grad">CineX</span></h1>
+            <p class="lead text-white-50">Cập nhật phim hot, suất chiếu mới mỗi ngày. Chọn ghế & thanh toán chỉ trong vài bước.</p>
+            <div class="d-flex gap-2">
+              <a class="btn btn-primary btn-lg" href="#now-playing">Mua vé ngay</a>
+            </div>
+          </div>
+          <div class="col-lg-6">
+            <div class="ratio ratio-16x9 rounded-4 overflow-hidden shadow-lg">
+              <iframe class="hero-video" src="assets/cinex.mp4" type="video/mp4" title="Trailer" allowfullscreen></iframe>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="hero-blur"></div>
+    </section>
+
+    <!-- FILTERS -->
+    <section class="py-4 bg-body-tertiary border-bottom">
+      <div class="container">
+        <div class="row g-2 align-items-center">
+          <div class="col-6 col-md-3">
+            <select id="genreFilter" class="form-select">
+              <option value="">Thể loại: Tất cả</option>
+              <option>Hành động</option>
+              <option>Tình cảm</option>
+              <option>Kinh dị</option>
+              <option>Hoạt hình</option>
+              <option>Hài</option>
+            </select>
+          </div>
+          <div class="col-6 col-md-3">
+            <select id="ratingFilter" class="form-select">
+              <option value="">Đánh giá: Tất cả</option>
+              <option value="8">Từ 8.0+</option>
+              <option value="7">Từ 7.0+</option>
+              <option value="6">Từ 6.0+</option>
+            </select>
+          </div>
+          <div class="col-12 col-md-6 text-md-end">
+            <div class="btn-group" role="group" aria-label="Sort">
+              <input type="radio" class="btn-check" name="sort" id="sortPopular" autocomplete="off" checked>
+              <label class="btn btn-outline-secondary" for="sortPopular"><i class="bi bi-fire"></i> Phổ biến</label>
+              <input type="radio" class="btn-check" name="sort" id="sortRating" autocomplete="off">
+              <label class="btn btn-outline-secondary" for="sortRating"><i class="bi bi-star"></i> Điểm cao</label>
+              <input type="radio" class="btn-check" name="sort" id="sortLatest" autocomplete="off">
+              <label class="btn btn-outline-secondary" for="sortLatest"><i class="bi bi-clock-history"></i> Mới nhất</label>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- NOW PLAYING -->
+    <section id="now-playing" class="py-5">
+      <div class="container">
+        <div class="d-flex justify-content-between align-items-center mb-3">
+          <h2 class="h3 m-0">Đang chiếu</h2>
+          <a href="#" class="text-decoration-none">Xem tất cả</a>
+        </div>
+        <div id="movieGrid" class="row g-4">
+          <!-- Cards injected by JS -->
+        </div>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer bg-black text-light pt-5 pb-4 border-top border-secondary">
+  <div class="container">
+    <div class="row gy-4">
+      
+      <!-- Cột 1: Logo & mô tả -->
+      <div class="col-md-4">
+        <h3 class="fw-bold text-danger mb-2">
+          <i class="bi bi-film"></i> CineX
+        </h3>
+        <p class="text-white-50 small mb-3">
+          CineX — nền tảng đặt vé xem phim hiện đại. Cập nhật trailer, đánh giá, và suất chiếu nhanh chóng.  
+          Giao diện thân thiện, hỗ trợ mọi thiết bị.
+        </p>
+        <div class="d-flex gap-3">
+          <a href="#" class="text-white-50 fs-5"><i class="bi bi-facebook"></i></a>
+          <a href="#" class="text-white-50 fs-5"><i class="bi bi-instagram"></i></a>
+          <a href="#" class="text-white-50 fs-5"><i class="bi bi-youtube"></i></a>
+          <a href="#" class="text-white-50 fs-5"><i class="bi bi-tiktok"></i></a>
+        </div>
+      </div>
+
+      <!-- Cột 2: Liên kết chung -->
+      <div class="col-md-4">
+        <h6 class="text-uppercase fw-semibold mb-3 text-danger">Về CineX</h6>
+        <ul class="list-unstyled small">
+          <li><a href="sites/about.html" class="link-light text-decoration-none d-block mb-2"><i class="bi bi-chevron-right small"></i> Giới thiệu</a></li>
+          <li><a href="sites/privacy.html" class="link-light text-decoration-none d-block mb-2"><i class="bi bi-chevron-right small"></i> Chính sách bảo mật</a></li>
+          <li><a href="sites/terms.html" class="link-light text-decoration-none d-block mb-2"><i class="bi bi-chevron-right small"></i> Điều khoản sử dụng</a></li>
+          <li><a href="sites/ads.html" class="link-light text-decoration-none d-block mb-2"><i class="bi bi-chevron-right small"></i> Liên hệ quảng cáo</a></li>
+        </ul>
+      </div>
+
+      <!-- Cột 3: Thông tin liên hệ -->
+      <div class="col-md-4">
+        <h6 class="text-uppercase fw-semibold mb-3 text-danger">Liên hệ</h6>
+        <ul class="list-unstyled small">
+          <li class="mb-2"><i class="bi bi-geo-alt-fill text-danger"></i> 30 Nguyễn Thị Minh Khai, Q.1, TP.HCM</li>
+          <li class="mb-2"><i class="bi bi-telephone-fill text-danger"></i> 1900 1234</li>
+          <li class="mb-2"><i class="bi bi-envelope-fill text-danger"></i> support@cinex.vn</li>
+          <li class="mb-2"><i class="bi bi-clock-fill text-danger"></i> 8:00 - 22:00 (T2 - CN)</li>
+        </ul>
+      </div>
+    </div>
+
+    <hr class="border-secondary my-4">
+
+    <div class="text-center small text-white-50">
+      © 2025 CineX. Mọi quyền được bảo lưu.  
+      <span class="text-danger">Thiết kế bởi Nhóm 6</span>
+    </div>
+  </div>
+</footer>
+     
+<!-- PopUp -->
+    <div id="popup" class="popup">
+        <div class="popup_content">
+            <span id="closePopup">&times;</span>
+
+            <div class="container">
+                <div class="tab">
+                    <button id="tabSignUp" class="active">Đăng ký</button>
+                    <button id="tabSignIn">Đăng nhập</button>
+                </div>
+            </div>
+
+            <div class="form_container">
+                <form id="sign_up" class="active">
+
+                    <div class="form_group_name">
+                        <label for="name">Tên đăng ký:</label>
+                        <input type="text" placeholder="Tên đăng ký" required>
+                    </div>
+
+                    <div class="form_group_phone">
+                        <label for="phone_number">Số điện thoại:</label>
+                        <input type="tel" placeholder="Số điện thoại" required>
+                    </div>
+                    <div class="form_group_password">
+                        <label for="password">Mật khẩu:</label>
+                        <div class="password_container">
+                            <input type="password" placeholder="Mật khẩu" required>
+                            <span class="toggle_password" onclick="toggle_password(this)">Hiện</span>
+                        </div>
+                    </div>
+
+                    <button type="submit">Xác nhận</button>
+
+                    <p>Đã có tài khoản? <a href="#" id="toSignIn"> Đăng nhập</a></p>
+                </form>
+                <form id="sign_in">
+
+                    <div class="form_group_name1">
+                        <label for="name1">Tên đăng nhập:</label>
+                        <input type="text" placeholder="Tên đăng nhập" required>
+                    </div>
+
+                    <div class="form_group_pass1">
+                        <label for="password1">Mật khẩu:</label>
+                        <div class="password_container">
+                            <input type="password" placeholder="Mật khẩu" required>
+                            <span class="toggle_password" onclick="toggle_password(this)">Hiện</span>
+                        </div>
+                    </div>
+                    <button type="submit">Xác nhận</button>
+                    <p>Chưa có tài khoản? <a href="#" id="toSignUp"> Đăng ký</a></p>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div id="popupSuccess" class="popup2">
+        <div class="popup_content2">
+            <span id="closePopup2">&times;</span>
+            <p>Thành công!</p>
+        </div>
+    </div>
+
+    <!-- Bootstrap & App JS -->
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/js/app.js"></script>
+    <script src="assets/js/script_signin.js"></script>
+    <script>
+      // boot demo data on load
+      document.addEventListener('DOMContentLoaded', () => window.CineX.initIndex());
+    </script>
+  </body>
+</html>

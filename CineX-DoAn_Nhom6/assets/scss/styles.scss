@@ -1,0 +1,110 @@
+// CineX SCSS — edit me, then compile to assets/css/styles.css
+$primary: #7c5cff;
+$accent:  #00d4ff;
+$dark:    #0f1222;
+$soft:    #1b2040;
+
+:root {
+  --cx-primary: #{$primary};
+  --cx-accent:  #{$accent};
+  --cx-dark:    #{$dark};
+  --cx-soft:    #{$soft};
+}
+
+body {
+  font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  background: #0b0e1a;
+  color: #e9ecf1;
+}
+
+.navbar {
+  background: linear-gradient(180deg, $dark, rgba($dark, .9));
+}
+
+.hero-section {
+  position: relative;
+  overflow: hidden;
+
+  .grad {
+    background: linear-gradient(90deg, $primary, $accent);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  .hero-blur {
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(60% 60% at 80% 20%, rgba($primary, .25), transparent 60%),
+      radial-gradient(40% 40% at 10% 90%, rgba($accent, .18), transparent 60%);
+    pointer-events: none;
+  }
+}
+
+.card.movie {
+  background: #121634;
+  border: 1px solid #222853;
+
+  .badge { background: #1d234a; color: #b8c0ff; }
+  .tag   { background: #21284f; color: #9fb3ff; }
+}
+
+.poster { width: 100%; aspect-ratio: 2/3; object-fit: cover; border-radius: .75rem; }
+.poster-lg { width: 180px; height: 270px; object-fit: cover; }
+
+.badge-rating { background: #ffd76b; color: #3b2f00; }
+
+.btn-primary { background: linear-gradient(90deg, $primary, $accent); border: 0; }
+
+.movie-hero {
+  background: linear-gradient(0deg, $dark, #0b0e1a);
+}
+
+.seat-map {
+  display: grid;
+  grid-template-columns: repeat(10, minmax(24px, 1fr));
+  gap: .5rem;
+  padding: 1rem;
+  background: $dark;
+  border-radius: .75rem;
+  border: 1px solid #222853;
+
+  .seat {
+    background: #1c2144;
+    border: 1px solid #2b3263;
+    border-radius: .5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 36px;
+    cursor: pointer;
+    user-select: none;
+    font-size: .8rem;
+    color: #b8c0ff;
+
+    &.selected { background: $primary; color: white; border-color: lighten($primary, 10%); }
+    &.sold     { background: #2a2f56; color: #666; cursor: not-allowed; text-decoration: line-through; }
+  }
+}
+.header {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+
+  .banner {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    max-height: 100vh;
+
+    video {
+      display: block;
+      width: 100%;
+      height: auto;
+      max-height: 100vh;
+      object-fit: contain;
+      object-position: center;
+    }
+  }
+}

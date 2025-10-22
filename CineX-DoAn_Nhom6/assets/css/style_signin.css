@@ -1,0 +1,92 @@
+/* ====== CineX Auth (clean) ====== */
+:root {
+  --main-color: #e63946;      /* đỏ CineX */
+  --border-color: #e63946;
+  --bg-light: #f8f9fa;        /* nền nhạt cho button ngoài */
+  --bg-popup: #1b1b1b;        /* nền tối popup */
+  --text-light: #f8f9fa;
+  --input-bg: #2a2a2a;
+  --btn-hover: #ff5c68;
+}
+
+/* Nút mở popup (navbar) */
+.btn-signin{
+  font-size:16px; font-weight:600;
+  color:var(--main-color);
+  background:var(--bg-light);
+  border:2px solid var(--border-color);
+  border-radius:12px; padding:8px 14px; cursor:pointer;
+}
+.btn-signin:hover{ background:#fde5df; }
+
+/* Overlay popup */
+.popup,.popup2{
+  display:none; position:fixed; inset:0;
+  background:rgba(0,0,0,.65);
+  justify-content:center; align-items:center;
+  z-index:9999;
+}
+.popup.show,.popup2.show{ display:flex !important; }
+
+/* Hộp nội dung */
+.popup_content,.popup_content2{
+  position:relative;
+  width:340px; padding:28px 30px;
+  border-radius:16px; box-shadow:0 8px 28px rgba(0,0,0,.5);
+  background:var(--bg-popup); color:var(--text-light);
+  border:1px solid #333;
+}
+.popup_content2{
+  width:200px; min-height:90px; text-align:center;
+  border-color:var(--main-color);
+}
+
+/* Nút đóng */
+.close,#closePopup2{
+  position:absolute; right:10px; top:8px;
+  font-size:22px; cursor:pointer; color:var(--text-light);
+}
+.close:hover{ color:var(--main-color); }
+
+/* Tabs */
+.tab{ display:flex; justify-content:center; gap:8px; margin-bottom:15px; }
+.tab button{
+  padding:8px 12px; border-radius:8px;
+  border:1.5px solid transparent; background:transparent;
+  color:var(--text-light); cursor:pointer; transition:.25s;
+}
+.tab button:hover{ color:var(--main-color); }
+.tab button.active{ background:var(--main-color); border-color:var(--border-color); color:#fff; }
+
+/* Forms */
+.form_container form{ display:none; flex-direction:column; gap:10px; }
+.form_container form.active{ display:flex; }
+
+label{ color:#bbb; font-size:14px; }
+input{
+  width:100%; background:var(--input-bg); color:var(--text-light);
+  border:1px solid #444; border-radius:8px; padding:10px; outline:none;
+}
+input::placeholder{ color:#888; }
+input:focus{ border-color:var(--main-color); background:#232323; }
+
+/* Hiện/ẩn mật khẩu */
+.password_container{ position:relative; }
+.toggle_password{
+  position:absolute; right:10px; top:50%; transform:translateY(-50%);
+  color:var(--main-color); font-size:13px; cursor:pointer;
+}
+
+/* Submit */
+button[type="submit"]{
+  margin-top:10px;
+  background:var(--main-color); color:#fff;
+  border:none; border-radius:8px; padding:10px;
+  font-weight:700; cursor:pointer; transition:.3s;
+}
+button[type="submit"]:hover{ background:var(--btn-hover); transform:translateY(-2px); }
+
+/* Link chuyển tab */
+p{ color:#ccc; text-align:center; margin-top:10px; }
+p a{ color:var(--main-color); text-decoration:underline; }
+p a:hover{ color:var(--btn-hover); }
